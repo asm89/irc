@@ -5,6 +5,7 @@ use std::{
     collections::HashMap,
     fs::File,
     io::prelude::*,
+    net::IpAddr,
     path::{Path, PathBuf},
 };
 
@@ -97,6 +98,9 @@ pub struct Config {
     /// The port to connect on.
     #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
     pub port: Option<u16>,
+    /// The ip address to connect to. If not set, an ip for `server` will be resolved.
+    #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
+    pub ip: Option<IpAddr>,
     /// The password to connect to the server.
     #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
     pub password: Option<String>,
